@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Mizan on 07/11/2018.
  */
@@ -18,7 +21,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "my_table";
     private static final String ID = "_id";
-    private static final String NAME = "name";
+    public static final String NAME = "name";
     private static final String EMAIL = "email";
     private static final String ADDRESS = "address";
     private static final String PHONE = "phone";
@@ -118,6 +121,64 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqlitedatabase = this.getWritableDatabase();
         return sqlitedatabase.delete(TABLE_NAME,ID+" = ?",new String[]{id});
     }
+
+
+
+
+
+    public ArrayList<Mizan> getAllLabels2(){
+        ArrayList<Mizan> labels = new ArrayList<Mizan>();
+
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_NAME ;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+
+                String colID = cursor.getString(cursor.getColumnIndex(NAME));
+                String colName = cursor.getString(cursor.getColumnIndex(ADDRESS));
+
+                labels.add(new Mizan(colID,colName));
+            } while (cursor.moveToNext());
+        }
+
+        // closing connection
+        cursor.close();
+        db.close();
+
+        // returning lables
+        return labels;
+    }
+
+
+//
+//    public List<String> getAllLabels2(){
+//        List<String> labels = new ArrayList<String>();
+//
+//        // Select All Query
+//        String selectQuery = "SELECT _id,name FROM " + TABLE_NAME ;
+//
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//
+//        // looping through all rows and adding to list
+//        if (cursor.moveToFirst()) {
+//            do {
+//                labels.add(cursor.getString(0));
+//            } while (cursor.moveToNext());
+//        }
+//
+//        // closing connection
+//        cursor.close();
+//        db.close();
+//
+//        // returning lables
+//        return labels;
+//    }
 
 
 

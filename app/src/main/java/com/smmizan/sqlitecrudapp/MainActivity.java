@@ -1,5 +1,6 @@
 package com.smmizan.sqlitecrudapp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
@@ -120,14 +121,17 @@ public class MainActivity extends AppCompatActivity {
         bDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id = eID.getText().toString();
-                int delete = myDatabaseHelper.deleteData(id);
-                if(delete > 0 )
-                {
-                    Toast.makeText(MainActivity.this, "Successfully Delete row", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(MainActivity.this, "Not Deleted a row", Toast.LENGTH_SHORT).show();
-                }
+//                String id = eID.getText().toString();
+//                int delete = myDatabaseHelper.deleteData(id);
+//                if(delete > 0 )
+//                {
+//                    Toast.makeText(MainActivity.this, "Successfully Delete row", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    Toast.makeText(MainActivity.this, "Not Deleted a row", Toast.LENGTH_SHORT).show();
+//                }
+
+                Intent intent = new Intent(MainActivity.this,SpinnerLoadFromSQLiteDB.class);
+                startActivity(intent);
 
             }
         });

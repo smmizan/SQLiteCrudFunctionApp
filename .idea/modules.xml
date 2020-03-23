@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SQLiteCRUDapp.iml" filepath="$PROJECT_DIR$/SQLiteCRUDapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpinnerLoadFromSQLite.iml" filepath="$PROJECT_DIR$/SpinnerLoadFromSQLite.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
